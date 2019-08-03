@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Good-Fast-Cheap</title>
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin: 10px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color:cadetblue;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="main" style="margin: auto;text-align: center;width: 400px;height: 600px;background: beige">
+    <div class="center" style="padding:200px 100px">
+       <table>
+           <tr>
+               <td>
+                   <label class="switch">
+                       <input onclick="checkedGood(this)" id="good" type="checkbox" value="0">
+                       <span class="slider round"></span>
+
+                   </label>
+               </td>
+               <td>Good</td>
+           </tr>
+           <tr>
+               <td>
+                   <label class="switch">
+                       <input onclick="checkedFast(this)" id="fast" type="checkbox" value="0">
+                       <span class="slider round"></span>
+                   </label>
+               </td>
+               <td>Fast</td>
+           </tr>
+           <tr>
+               <td>
+                   <label class="switch">
+                       <input onclick="checkedCheap(this)" id="cheap" type="checkbox" value="0" >
+                       <span class="slider round"></span>
+                   </label>
+               </td>
+               <td>Cheap</td>
+           </tr>
+       </table>
+
+
+    </div>
+</div>
+
+<script>
+
+
+    function checkedGood(a) {
+
+        clicked = a.value; // Lay gia tri ban dau de tinh luot click chuot
+
+        clicked++;
+
+        a.setAttribute('value',clicked);
+
+        _cheap = document.getElementById('cheap').getAttribute('checked'); // Kiem tra checkbox Cheap dang on hay off
+
+        console.log(clicked,"Cheap = "+_cheap);
+
+        if (clicked % 2 == 0 || _cheap != null){ // Checkbox off
+                document.getElementById('good').removeAttribute('checked');
+                document.getElementById('cheap').removeAttribute('checked');
+
+        }else{
+
+            document.getElementById('cheap').setAttribute('checked','');
+            document.getElementById('good').setAttribute('checked','');
+
+        }
+
+    }
+    function checkedFast(b) {
+
+        clicked = b.value;
+
+        clicked++;
+
+        b.setAttribute('value',clicked);
+
+        //console.log(clicked);
+
+        _good = document.getElementById('good').getAttribute('checked');
+
+        console.log(clicked,"Good = "+_good);
+
+        if (clicked % 2 == 0 || _good != null){
+            document.getElementById('fast').removeAttribute('checked');
+            document.getElementById('good').removeAttribute('checked');
+
+        }else{
+            document.getElementById('fast').setAttribute('checked','');
+            document.getElementById('cheap').setAttribute('checked','');
+            document.getElementById('good').setAttribute('checked','');
+
+        }
+    }
+    function checkedCheap(c) {
+
+        clicked = c.value;
+
+        clicked++;
+
+        c.setAttribute('value',clicked);
+
+        //console.log(clicked);
+
+        _fast = document.getElementById('fast').getAttribute('checked');
+
+        console.log(clicked,"Fast = "+ _fast);
+
+        if (clicked % 2 == 0 || _fast != null){
+            document.getElementById('cheap').removeAttribute('checked');
+            document.getElementById('fast').removeAttribute('checked');
+
+        }else{
+            document.getElementById('fast').setAttribute('checked','');
+            //document.getElementById('cheap').setAttribute('checked','');
+            document.getElementById('good').setAttribute('checked','');
+
+        }
+    }
+
+
+</script>
+
+
+
+</body>
+</html>
