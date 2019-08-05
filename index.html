@@ -118,11 +118,9 @@
 
         a.setAttribute('value',clicked);
 
-        _cheap = document.getElementById('cheap').getAttribute('checked'); // Kiem tra checkbox Cheap dang on hay off
-
-        console.log(clicked,"Cheap = "+_cheap);
-
-        if (clicked % 2 == 0 || _cheap != null){ // Checkbox off
+        document.getElementById('cheap').setAttribute('value',clicked);
+        _a = document.getElementById('cheap').getAttribute('checked');
+        if (clicked % 2 == 0 || _a != null){ // Checkbox off
                 document.getElementById('good').removeAttribute('checked');
                 document.getElementById('cheap').removeAttribute('checked');
 
@@ -141,21 +139,16 @@
         clicked++;
 
         b.setAttribute('value',clicked);
+        document.getElementById('cheap').setAttribute('value',clicked);
+        _b = document.getElementById('cheap').getAttribute('checked');
 
-        //console.log(clicked);
-
-        _good = document.getElementById('good').getAttribute('checked');
-
-        console.log(clicked,"Good = "+_good);
-
-        if (clicked % 2 == 0 || _good != null){
-            document.getElementById('fast').removeAttribute('checked');
+        if (clicked % 2 == 0 || _b != null){
+            document.getElementById('cheap').removeAttribute('checked');
             document.getElementById('good').removeAttribute('checked');
 
         }else{
             document.getElementById('fast').setAttribute('checked','');
             document.getElementById('cheap').setAttribute('checked','');
-            document.getElementById('good').setAttribute('checked','');
 
         }
     }
@@ -166,21 +159,16 @@
         clicked++;
 
         c.setAttribute('value',clicked);
+        document.getElementById('fast').setAttribute('value',clicked);
+        _c = document.getElementById('fast').getAttribute('checked');
 
-        //console.log(clicked);
-
-        _fast = document.getElementById('fast').getAttribute('checked');
-
-        console.log(clicked,"Fast = "+ _fast);
-
-        if (clicked % 2 == 0 || _fast != null){
+        if (clicked % 2 == 0 || _c != null){
             document.getElementById('cheap').removeAttribute('checked');
             document.getElementById('fast').removeAttribute('checked');
 
         }else{
             document.getElementById('fast').setAttribute('checked','');
-            //document.getElementById('cheap').setAttribute('checked','');
-            document.getElementById('good').setAttribute('checked','');
+            document.getElementById('cheap').setAttribute('checked','');
 
         }
     }
